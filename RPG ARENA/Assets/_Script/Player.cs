@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     [Header("Player Reference")]
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private Transform slopeDetectionPoint;
-    [SerializeField] private Transform weaponSpawnPoint;
-    [SerializeField] private _WeaponListSO weaponListSO;
     [SerializeField] private LayerMask groundLayer;
     private Animator animator;
     private GameInput gameInput;
@@ -58,11 +56,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //Weapon Fix Scale
-        GameObject spawnWeapon = Instantiate(weaponListSO.weaponList[0].weaponReference);
-        spawnWeapon.transform.position = weaponSpawnPoint.position;
-        spawnWeapon.transform.SetParent(weaponSpawnPoint, true);
-
         GameInput.Instance.OnJumpButtonClick += GameInput_OnJumpButtonClick;
         GameInput.Instance.OnAttackButtonClick += GameInput_OnAttackButtonClick;
     }
